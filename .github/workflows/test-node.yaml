@@ -38,7 +38,7 @@ jobs:
       - name: Install Dependencies
         run: |
           corepack --version
-          npm ls -g
+          corepack install --global pnpm@*
           pnpm install
 
       - name: Vitest
