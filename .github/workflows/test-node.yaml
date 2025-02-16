@@ -28,7 +28,9 @@ jobs:
           fetch-depth: 1
 
       - name: Install Pnpm
-        run: corepack enable
+        run: |
+          corepack install --global pnpm@*
+          corepack enable
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -37,8 +39,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          corepack --version
-          corepack install --global pnpm@*
+          npm ls -g
           pnpm install
 
       - name: Vitest
