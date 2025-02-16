@@ -1,9 +1,5 @@
 name: Test (vitest & playwright - Windows)
 
-concurrency:
-  group: windows-test-${{ github.head_ref }}
-  cancel-in-progress: true
-
 # Controls when the action will run.
 on:
   # Triggers the workflow on pull request events but only for the main branch
@@ -22,11 +18,7 @@ on:
 jobs:
   test-on-windows:
     # The type of runner that the job will run on
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node-version: [22.x]
-        os: [windows-latest] # windows-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -43,7 +35,6 @@ jobs:
       - name: Install Pnpm
         run: |
           npm install -g corepack@0.31.0
-          corepack install --global pnpm@*
           corepack enable
           corepack --version
 
@@ -55,11 +46,11 @@ jobs:
       - name: Log skip CI result
         run: echo "${{steps.skip-ci.outputs.RESULT}}"
 
-      - name: Setup Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js
         if: ${{steps.skip-ci.outputs.RESULT != 'true'}}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 22.x
 
       - name: Install Dependencies
         if: ${{steps.skip-ci.outputs.RESULT != 'true'}}
