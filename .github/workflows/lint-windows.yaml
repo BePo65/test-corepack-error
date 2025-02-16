@@ -44,8 +44,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          corepack --version
-          npm ls -g
+          corepack disable
           pnpm install
 
       - name: Lint
