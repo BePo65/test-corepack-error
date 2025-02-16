@@ -30,9 +30,9 @@ jobs:
       - name: Install Pnpm
         run: |
           npm install -g corepack@0.31.0
-          corepack install --global pnpm@*
+          # corepack install --global pnpm@*
           corepack enable
-          corepack --version
+          # corepack --version
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -41,8 +41,8 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          corepack --version
-          npm ls -g
+          # corepack --version
+          # npm ls -g
           pnpm install
 
       - name: Vitest
