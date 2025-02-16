@@ -2,6 +2,7 @@
   "name": "test-corepack-error",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@9.15.2",
   "description": "Test project to track down the esday issues with corepacks 'Cannot find matching keyid' problem",
   "author": "BePo65",
   "license": "MIT",
