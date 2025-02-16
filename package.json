@@ -9,7 +9,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "pnpm exec eslint .",
-    "test:run": "vitest --run"
+    "test:run": "vitest --run",
+    "test:run-browser": "vitest --run --browser.enabled"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.2.1",
