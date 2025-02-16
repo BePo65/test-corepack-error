@@ -36,7 +36,10 @@ jobs:
           node-version: 22.x
 
       - name: Install Dependencies
-        run: pnpm install
+        run: |
+          corepack --version
+          npm ls -g
+          pnpm install
 
       - name: Vitest
         run: pnpm run test:run
