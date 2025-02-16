@@ -34,8 +34,8 @@ jobs:
 
       - name: Install Pnpm
         run: |
-          npm install -g corepack@0.31.0
-          corepack enable
+          npm install -g pnpm@9.15.2
+          corepack disable
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -44,9 +44,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          corepack disable
           pnpm install
 
       - name: Lint
         run: pnpm run lint
-  
