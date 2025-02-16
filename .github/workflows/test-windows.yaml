@@ -41,7 +41,11 @@ jobs:
           fetch-depth: 1
 
       - name: Install Pnpm
-        run: corepack enable
+        run: |
+          npm install -g corepack@0.31.0
+          corepack install --global pnpm@*
+          corepack enable
+          corepack --version
 
       - name: Check skip CI
         shell: bash
@@ -59,7 +63,10 @@ jobs:
 
       - name: Install Dependencies
         if: ${{steps.skip-ci.outputs.RESULT != 'true'}}
-        run: pnpm install
+        run: |
+          corepack --version
+          npm ls -g
+          pnpm install
 
       - name: Unit Test
         if: ${{steps.skip-ci.outputs.RESULT != 'true'}}
